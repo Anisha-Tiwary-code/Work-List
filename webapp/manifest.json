@@ -1,0 +1,141 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "id": "com.reckitt.zpeworklist",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.12.1",
+            "toolsId": "6bb87141-b427-4b7e-96e4-96104286de13"
+        },
+        "dataSources": {
+            "ZOD_PE_SEARCHHELP_SRV": {
+              "uri": "/sap/opu/odata/sap/ZOD_PE_SEARCHHELP_SRV/",
+              "type": "OData",
+              "settings": {
+                "odataVersion": "2.0",
+                "localUri": "localService/ZOD_PE_SEARCHHELP_SRV.xml"
+              }
+            },
+            "ZOD_PE_PRODORD_WRK2LIST_SRV": {
+              "uri": "/sap/opu/odata/sap/ZOD_PE_PRODORD_WRK2LIST_SRV/",
+              "type": "OData",
+              "settings": {
+                "odataVersion": "2.0",
+                "localUri": "localService/metadata.xml"
+              }
+            }
+          }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.71.49",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.reckitt.zpeworklist.i18n.i18n"
+                }
+            },
+            "oDataSearchModel": {
+                "dataSource": "ZOD_PE_SEARCHHELP_SRV",
+                "preload": true,
+                "settings": {
+                  "defaultBindingMode": "TwoWay",
+                  "defaultCountMode": "Inline",
+                  "refreshAfterChange": false
+                }
+              },
+              "oDataWorkListModel": {
+                "dataSource": "ZOD_PE_PRODORD_WRK2LIST_SRV",
+                "preload": true,
+                "settings": {
+                  "defaultBindingMode": "TwoWay",
+                  "defaultCountMode": "Inline",
+                  "refreshAfterChange": false
+                }
+              }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.reckitt.zpeworklist.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteWorkToList",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetWorkToList"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetWorkToList": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "WorkToList",
+                    "viewName": "WorkToList"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.reckitt.zpeworklist.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

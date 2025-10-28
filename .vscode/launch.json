@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "zpe_worklist-config1",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "args": [
+        "--open",
+        "index.html"
+      ],
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std",
+      "env": {
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/zpe_worklist\"}",
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"path\":\"/sap\",\"url\":\"http://tazfridevpas.idc.rb.net:8000\",\"client\":\"010\",\"destination\":\"GDF\"},{\"path\":\"/sap\",\"url\":\"http://tazfridevpas.idc.rb.net:8000\",\"client\":\"010\",\"destination\":\"GDF\"},{\"path\":\"/sap/opu/odata/sap/ZOD_PE_SEARCHHELP_SRV\",\"url\":\"http://tazfridevpas.idc.rb.net:8000\",\"client\":\"010\",\"destination\":\"GDF\"},{\"path\":\"/sap/opu/odata/sap/ZOD_PE_SEARCHHELP_SRV\",\"url\":\"http://tazfridevpas.idc.rb.net:8000\",\"client\":\"010\",\"destination\":\"GDF\"},{\"path\":\"/sap/opu/odata/sap/ZOD_PE_PRODORD_WRK2LIST_SRV\",\"url\":\"http://tazfridevpas.idc.rb.net:8000\",\"client\":\"010\",\"destination\":\"GDF\"}]",
+        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+      }
+    }
+  ]
+}

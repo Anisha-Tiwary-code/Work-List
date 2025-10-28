@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<ViewSettingsDialog confirm="handleSortConfirm" class="sapUiSizeCompact" cancel="onAfterDialogClose">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>lblOrder}" key="Aufpl" selected="true"/>
+			<ViewSettingsItem text="{i18n>lblMaterial}" key="Matnr"/>
+			<ViewSettingsItem text="{i18n>lblDescription}" key="Maktx"/>
+			<ViewSettingsItem text="{i18n>lblBatch}" key="Charg"/>
+			<ViewSettingsItem text="{i18n>lblWorkCenter}" key="Arbpl"/>
+			<ViewSettingsItem text="{i18n>lblOperation}" key="Vornr"/>
+			<ViewSettingsItem text="{i18n>lblQty}" key="Mgvrg"/>
+			<ViewSettingsItem text="{i18n>lblYield}" key="Lmnga"/>
+			<ViewSettingsItem text="{i18n>lblUoM}" key="Meinh"/>
+			<ViewSettingsItem text="{i18n>lblLSD}" key="LatStartDate"/>
+			<ViewSettingsItem text="{i18n>lblLST}" key="LatStartTime"/>
+			<ViewSettingsItem text="{i18n>lblSystemStatus}" key="SysStatus"/>
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

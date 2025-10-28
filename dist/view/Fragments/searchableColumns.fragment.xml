@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<Dialog title="{i18n>lblSelectColumns}" afterClose="onAfterDialogClose">
+	<List
+		items="{SearchableColumnsModel>/columns}"
+		mode="MultiSelect"
+		includeItemInSelection="true">
+		<StandardListItem
+			title="{SearchableColumnsModel>cell}"
+			selected="{SearchableColumnsModel>status}"/>
+			 <!-- Code Added By Komal Nilakhe on 09082024 added selected code -->
+	</List>
+	<buttons>
+		<Button text="{i18n>btnOK}" class="footerBtnWidth" type="Emphasized" press="onOK"/>
+		<Button text="{i18n>btnClose}" visible="true" press="onDialogClose"/>
+	</buttons>
+</Dialog>
+</core:FragmentDefinition>

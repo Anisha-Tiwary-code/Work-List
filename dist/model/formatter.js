@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/Text"],function(t){"use strict";return{dateFormat:function(t){if(t!=undefined){var e=new Date(t);var a=String(e.getDate()).padStart(2,"0");var r=String(e.getMonth()+1).padStart(2,"0");var n=a+"-"+r+"-"+e.getFullYear();return n}}}});
+//# sourceMappingURL=formatter.js.map

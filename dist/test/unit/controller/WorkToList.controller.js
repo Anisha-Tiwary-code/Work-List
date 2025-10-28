@@ -1,0 +1,2 @@
+sap.ui.define(["comreckitt/zpe_worklist/controller/WorkToList.controller"],function(o){"use strict";QUnit.module("WorkToList Controller");QUnit.test("I should test the WorkToList controller",function(t){var r=new o;r.onInit();t.ok(r)})});
+//# sourceMappingURL=WorkToList.controller.js.map

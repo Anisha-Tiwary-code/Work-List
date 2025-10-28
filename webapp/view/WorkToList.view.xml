@@ -1,0 +1,119 @@
+<mvc:View controllerName="com.reckitt.zpeworklist.controller.WorkToList" xmlns:smartVariantManagement="sap.ui.comp.smartvariants"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+		<l:VerticalLayout>
+            <smartVariantManagement:SmartVariantManagement
+                id="pageVariantId1"
+                persistencyKey="PageVariantPKey"/>
+            </l:VerticalLayout>
+        <Panel headerText="{i18n>lblheaderFilter}" expandable="true" expanded="true" class="sapUiSizeCompact">
+							<content>
+            <f:SimpleForm layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+									<f:content>
+										<Label text="{i18n>lblStatus}" required="true"/>
+										<CheckBox id="cb1" text="{i18n>txtCRTD}" selected="{filterModel>/CRTD}" valueState="{AppModeModel>/vsStatus}" valueStateText="{AppModeModel>/vsStatusErrorText}"/>
+										<CheckBox id="cb2" text="{i18n>txtREL}" selected="{filterModel>/REL}" valueState="{AppModeModel>/vsStatus}" valueStateText="{AppModeModel>/vsStatusErrorText}"/>
+                                        <CheckBox id="cb3" text="{i18n>txtTECO}" selected="{filterModel>/TECO}" valueState="{AppModeModel>/vsStatus}" valueStateText="{AppModeModel>/vsStatusErrorText}"/>
+										
+										<Label text="{i18n>lblStartDateFrom}"/>
+										<Input id="idStartDateFrom" class="sapUiSizeCompact"  value="{filterModel>/StartDateFrom}" type="Number" liveChange="onlivechange"/>
+										<Label text="{i18n>lblWorkCenter}" required="true"/>
+										<!-- <MultiInput id="idWorkCenter" class="sapUiSizeCompact" showValueHelp="true" valueHelpRequest="onVHWorkCenter" value="{filterModel>/WorkCenter}" valueState="{AppModeModel>/vsWorkCenter1}" valueStateText="{AppModeModel>/vsWorkCenter1ErrorText}" />
+										 -->
+										 <!-- Code Added By Komal Nilakhe on 09082024 Starts Here -->
+										 <MultiInput id="idWorkCenter" class="sapUiSizeCompact" showValueHelp="true" valueHelpRequest="onVHWorkCenter" value="{filterModel>/WorkCenter}"
+											valueState="{AppModeModel>/vsWorkCenter1}" valueStateText="{AppModeModel>/vsWorkCenter1ErrorText}" showSuggestion="true" suggest="handleSuggest" 
+											suggestionItems="{path: 'CommonValueHelpModel>/WorkCenter', templateShareable: true}">
+											<core:ListItem additionalText="{CommonValueHelpModel>Ktext}" key="{CommonValueHelpModel>Arbpl}" text="{CommonValueHelpModel>Arbpl}"/>
+											</MultiInput>
+										<!-- Code Added By Komal Nilakhe on 09082024 Ends Here -->
+										<Label text="{i18n>lblStartDateTo}" />
+										<Input id="idStartDateTo" class="sapUiSizeCompact" value="{filterModel>/StartDateTo}" type="Number" liveChange="onlivechange" />
+										
+										<Label text="{i18n>lblPlant}" required="true"/>
+										<Input id="idPlant" class="sapUiSizeCompact" value="{filterModel>/Plant}" change="onPlantChange" valueState="{AppModeModel>/vsPlant}" valueStateText="{AppModeModel>/vsPlantErrorText}"/>
+									</f:content>
+								</f:SimpleForm>
+								<Bar class="zWOList_Bar">
+									<contentRight>
+										<Button press="onSearch" text="{i18n>btnGo}" type="Emphasized" width="10em"/>
+									</contentRight>
+								</Bar>
+							<Table id="WorkListTable" items="{TableModel>/}" class="" growing="true" growingThreshold="20" mode="SingleSelectMaster" selectionChange="onSelectItem">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="{i18n>lblWTL}" id="tableHeader"/>
+									<ToolbarSpacer/>
+									<!-- Edit button Code commented By Komal Nilakhe on 12082024 -->
+									<!-- <Button icon="sap-icon://user-edit" tooltip="{i18n>lblEdit}" press="onSearchableColumns" type="Emphasized"/> -->
+									<SearchField id="searchField" class="searchField" liveChange="onLiveTableSearch" search="onFilter" tooltip="{i18n>lblmasterSearchTooltip}"
+										width="50%"></SearchField>
+									<Button icon="sap-icon://sort" tooltip="{i18n>lblSort}" press="sortCategories"/>
+									</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="order" width="6rem" popinDisplay="Inline" demandPopin="true">
+									<Label text="{i18n>lblOrder}" wrapping="true"/>
+								</Column>
+                                <Column id="material" width="6rem" popinDisplay="Inline" demandPopin="true">
+									<Label text="{i18n>lblMaterial}" wrapping="true"/>
+								</Column>
+								<Column id="description"  popinDisplay="Inline" demandPopin="true">
+									<Label text="{i18n>lblDescription}" wrapping="true"/>
+								</Column>
+								<Column id="batch" width="6rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblBatch}" />
+								</Column>
+                                <Column id="workcenter" width="6rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblWorkCenter}" wrapping="true"/>
+								</Column>
+                                <Column id="operation" width="4rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblOperation}" wrapping="true"/>
+								</Column>
+                                <Column id="qty" width="6rem" hAlign="Right" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblQty}" wrapping="true"/>
+								</Column>
+                                <Column id="yield" width="7rem" hAlign="Right" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblYield}" wrapping="true"/>
+								</Column>
+                                <Column id="uom" width="4rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblUoM}" wrapping="true"/>
+								</Column>
+								<Column id="lsd" width="7rem">
+									<Label  text="{i18n>lblLSD}" wrapping="false"/>
+								</Column>
+								<Column id="lst" width="5rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblLST}"/>
+								</Column>
+								<Column id="status" width="4rem" popinDisplay="Inline" demandPopin="true">
+									<Label  text="{i18n>lblSystemStatus}"/>
+								</Column>
+								</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{TableModel>Aufnr}"/>
+										<Text text="{TableModel>Matnr}"/>
+										<Text text="{TableModel>Maktx}"/>
+										<Text text="{TableModel>Charg}"/>
+										<Text text="{TableModel>Arbpl}"/>
+                                        <Text text="{TableModel>Vornr}"/>
+										<Text text="{TableModel>Mgvrg}"/>
+										<Text text="{TableModel>Lmnga}"/>
+										<Text text="{TableModel>Meinh}"/>
+										<!-- <Text text="{TableModel>LatStartDate}"/> -->
+										<Text text="{path:'TableModel>LatStartDate', formatter: '.formatter.dateFormat'}"/>
+										<Text text="{TableModel>LatStartTime}"/>
+										<Text text="{TableModel>SysStatus}"/>
+										</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+                                </content>
+                                </Panel>
+							
+        </content>
+    </Page>
+</mvc:View>
