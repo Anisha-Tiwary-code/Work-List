@@ -21,7 +21,7 @@ builder:
           name: ZPE_WORKLIST
           description: work to list fiori application
           package: ZPE_FIORI
-          transport: GDFK900224 #GDFK900112
+          transport: GDFK900434 #GDFK900224 #GDFK900112
         exclude:
          - /test/
           - /localService/
